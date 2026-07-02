@@ -1,10 +1,10 @@
--- Overkill Script v7
+-- Overkill Script v7 (PC Edition)
 -- Features: Aimbot, ESP, MatchAware, BotESP, Rainbow, KillFeed, DeviceChanger, UnlockAll, ProfileSpoof
 
 -- ====================== LOADER ======================
 local myRepoCandidates = {
-    'https://raw.githubusercontent.com/bebeomiscar-sudo/Modded/refs/heads/main/Lua',
-    'https://raw.githubusercontent.com/bebeomiscar-sudo/Modded/main/Lua',
+    'https://raw.githubusercontent.com/bebeomiscar-sudo/Pc/refs/heads/main/Lua',
+    'https://raw.githubusercontent.com/bebeomiscar-sudo/Pc/main/Lua',
 }
 
 local linoriaRepo = 'https://raw.githubusercontent.com/violin-suzutsuki/LinoriaLib/main/'
@@ -42,12 +42,11 @@ local ThemeManager = LoadModule(linoriaRepo .. 'addons/ThemeManager.lua', 'Theme
 local SaveManager = LoadModule(linoriaRepo .. 'addons/SaveManager.lua', 'SaveManager.lua')
 
 local Window = Library:CreateWindow({
-    Title = 'logic',
+    Title = 'Overload Hub',
     Center = true,
     AutoShow = true,
     TabPadding = 8,
     MenuFadeTime = 0.2,
-    MobileButton = true,
 })
 
 local Tabs = {
@@ -1523,7 +1522,6 @@ AdvancedGroup:AddToggle('ShowAdvanced', {Text='Show advanced options', Default=f
 local AdvancedBox = AdvancedGroup:AddDependencyBox()
 AdvancedBox:AddSlider('UIScaleSlider', { Text = 'UI scale', Default = 100, Min = 50, Max = 150, Rounding = 0, Suffix = '%', Callback = function(v) Window:SetScale(v / 100) end })
 AdvancedBox:AddSlider('UITransparencySlider', { Text = 'Menu transparency', Default = 0, Min = 0, Max = 90, Rounding = 0, Suffix = '%', Callback = function(v) Window:SetTransparency(v / 100) end })
-AdvancedBox:AddToggle('MobileButtonToggle', { Text = 'Show floating mobile button', Default = true, Callback = function(v) Library:SetMobileButtonVisibility(v) end })
 AdvancedBox:AddDivider()
 AdvancedBox:AddDropdown('WeatherEffectDropdown', { Text = 'Weather effect', Values = { 'None', 'Snow', 'Rain', 'Lightning' }, Default = 'None', Callback = function(v) Library:SetWeatherEffect(v) end })
 AdvancedBox:AddDropdown('WeatherScopeDropdown', { Text = 'Weather location', Values = { 'Inside UI', 'Whole screen' }, Default = 'Inside UI', Callback = function(v) Library:SetWeatherScope(v == 'Whole screen' and 'Screen' or 'UI') end })
@@ -1536,8 +1534,8 @@ ThemeManager:SetLibrary(Library)
 SaveManager:SetLibrary(Library)
 SaveManager:IgnoreThemeSettings()
 SaveManager:SetIgnoreIndexes({ 'MenuKeybind' })
-ThemeManager:SetFolder('Overkill')
-SaveManager:SetFolder('unnamed)
+ThemeManager:SetFolder('OverloadHub')
+SaveManager:SetFolder('OverloadHub/specific-game')
 SaveManager:BuildConfigSection(Tabs['UI Settings'])
 ThemeManager:ApplyToTab(Tabs['UI Settings'])
 SaveManager:LoadAutoloadConfig()
